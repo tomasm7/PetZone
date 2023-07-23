@@ -1,0 +1,21 @@
+.simple-calendar {
+  table {
+    min-height: 80vh;
+  }
+  .today {
+    background-color: #cbc4ae;
+  }
+}
+
+.meeting {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: rgb(187, 127, 127);
+  transition: background 0.3s ease;
+}
+
+.meeting:hover {
+  background: rgb(219, 154, 154);
+  color: white;
+}

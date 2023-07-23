@@ -1,0 +1,22 @@
+
+.hover{
+  transition: all 0.5s ease-out;
+}
+.hover:hover{
+transform: scale(1.05);
+box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.back-meetings{
+  border-radius: 15px;
+  background: #bb7f7f;
+  box-shadow: inset -5px -5px 0px #b47a7a,
+              inset 5px 5px 0px #c28484;
+              opacity: 0.95;
+}
+
+.carta-recordatorio{
+  background-color: #F8F3DF;
+  border-radius: 15px;
+  opacity: 1;
+}

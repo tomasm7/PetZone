@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="p-2 text-dark">
+    <br>
+      <h1 class="mx-4 my-3 nombre-perrito" ><strong>Bienvenido <%= current_user.username %></strong> </h1>
+      <h3 class="mx-5 p-4" style="font-weight:bolder;font-size:37px;text-shadow: 0.5px 0.5px 1px black;">Estas son tus mascotas:</h3>
+        <div class="row m-5 justify-content-around">
+          <% @pets.each do |pet| %>
+          <div class="col-3 col-lg-2">
+            <div class="mx-auto ">
+              <% unless pet.photos.empty? %>
+                <div class="d-flex justify-content-center mt-5">
+                  <%= link_to pet_path(pet) do %>
+                  <%= cl_image_tag pet.photos.first.key,height: 150, width: 150, crop: :fill, class:"rounded-circle img-fluid hover" %>
+                  <% end %>
+                </div>
+                <% else %>
+                <div class="d-flex justify-content-center mt-5">
+                  <%= link_to pet_path(pet) do %>
+                  <%= image_tag asset_path("pet-sin-imagen"),height: 150, width: 150, class:"rounded-circle img-fluid hover" %>
+                  <% end %>
+                </div>
+              <% end %>
+            <div class="card-trip-infos mt-2">
+              <div>
+                <h5 class="card-title text-center"><%= link_to pet.name, pet_path(pet), class: "nav-link",style:"font-size:30px;font-weight:bold;text-shadow: 0.25px 0.25px 0.25px black;" %></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <div class="container text-center mt-4 p-5">
+          <%= link_to "Agregar mascota", new_pet_path,class:"btn btn-outline-success",style:"font-size:30px;text-shadow: 0.25px 0.25px 0.25px black;" %>
+        </div>
+  </div>
+
+  <br>
+
+    <div class="container p-3 my-5 back-meetings">
+      <h4 class="p-3" style="color:#F8F3DF;font-size:35px">Recordatorios</h4>
+      <div class="row justify-content-around">
+          <% @three_meetings.each do |meeting| %>
+            <div class="col-3 mx-4 my-2">
+              <div class="card carta-recordatorio">
+                <div class="card-body">
+                  <h5 class="card-title"><%= meeting.name %> para <%= meeting.pet.name %> </h5>
+                  <p class="card-text">Próxima aplicación: <br><%= meeting.start_time.strftime("%d-%m-%Y") %></p>
+                  <button class="btn btn-outline-success"> <%=   link_to "Ver calendario", calendar_path, style:"text-decoration:none;color:black" %> </button>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
+    </div>
+</div>
+<%# <i class="fa-regular fa-calendar"</i> %>
